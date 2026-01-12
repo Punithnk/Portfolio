@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0b2545" />
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#00bfa6" />
+      <stop offset="1" stop-color="#0077ff" />
+    </linearGradient>
+  </defs>
+  <rect x="40" y="40" width="1120" height="550" rx="24" fill="url(#g)" />
+  <text x="100" y="230" font-family="Segoe UI, Roboto, system-ui, -apple-system" font-size="64" fill="#fff" font-weight="700">Punith N K</text>
+  <text x="100" y="320" font-family="Segoe UI, Roboto, system-ui, -apple-system" font-size="36" fill="#ffffffcc">Entry-level Software Engineer • Projects & Skills</text>
+</svg>

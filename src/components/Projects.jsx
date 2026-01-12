@@ -1,24 +1,34 @@
-import React from 'react'
+import React from 'react';
 
-function Card({title, problem, solution, tech, link, focus}){
+function Card({ title, problem, solution, tech, link, focus }) {
   return (
     <article className="border rounded-lg p-5 bg-white shadow-sm hover:shadow-md transition-transform transform hover:-translate-y-1">
       <div className="flex items-start justify-between gap-4">
         <h3 className="font-semibold text-slate-800">{title}</h3>
         <div className="text-sm text-slate-500">{tech}</div>
       </div>
-      <p className="mt-3 text-sm text-slate-600"><strong>Problem:</strong> {problem}</p>
-      <p className="mt-2 text-sm text-slate-600"><strong>Solution:</strong> {solution}</p>
-      <p className="mt-2 text-sm text-slate-600"><strong>Tech:</strong> <span className="text-slate-700">{tech}</span></p>
+      <p className="mt-3 text-sm text-slate-600">
+        <strong>Problem:</strong> {problem}
+      </p>
+      <p className="mt-2 text-sm text-slate-600">
+        <strong>Solution:</strong> {solution}
+      </p>
+      <p className="mt-2 text-sm text-slate-600">
+        <strong>Tech:</strong> <span className="text-slate-700">{tech}</span>
+      </p>
       <div className="mt-4 flex items-center justify-between">
-        <a className="text-teal-600 hover:underline" href={link} target="_blank" rel="noreferrer">View on GitHub</a>
-        <span className="text-sm text-slate-500">Focus: <span className="text-slate-700">{focus}</span></span>
+        <a className="text-teal-600 hover:underline" href={link} target="_blank" rel="noreferrer">
+          View on GitHub
+        </a>
+        <span className="text-sm text-slate-500">
+          Focus: <span className="text-slate-700">{focus}</span>
+        </span>
       </div>
     </article>
-  )
+  );
 }
 
-export default function Projects(){
+export default function Projects() {
   return (
     <section id="projects" className="mb-12">
       <h2 className="text-2xl font-semibold text-slate-900 mb-4">Projects</h2>
@@ -60,5 +70,5 @@ export default function Projects(){
         />
       </div>
     </section>
-  )
-} 
+  );
+}

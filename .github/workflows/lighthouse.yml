@@ -1,0 +1,41 @@
+name: Lighthouse CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+
+      - name: Run Lighthouse CI (treosh action)
+        uses: treosh/lighthouse-ci-action@v9
+        with:
+          start_server_command: npm run preview -- --port 5173
+          urls: http://127.0.0.1:5173/
+          number_of_runs: 1
+          upload_artifacts: true
+          upload_artifacts_path: .lighthouseci
+          lhci_config_path: .lighthouserc.json
+
+      - name: Upload LHCI artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: lhci-report
+          path: .lighthouseci

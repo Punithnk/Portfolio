@@ -1,13 +1,20 @@
-import React from 'react'
+import React from 'react';
 
-export default function Education(){
+export default function Education() {
   return (
     <section className="mb-12">
       <h2 className="text-2xl font-semibold text-slate-900 mb-4">Education & Certifications</h2>
       <div className="space-y-4 text-slate-700">
         <div>
-          <h3 className="font-semibold">Bachelor of Engineering (B.E.), Civil Engineering — <em>Dr. Ambedkar Institute of Technology, Bengaluru</em> <span className="text-sm text-slate-500">(2021 – 2025) · CGPA: 7.23</span></h3>
-          <p className="text-sm mt-2">Relevant coursework: Structural analysis, Materials, Data-driven investigations, and foundational software engineering topics.</p>
+          <h3 className="font-semibold">
+            Bachelor of Engineering (B.E.), Civil Engineering —{' '}
+            <em>Dr. Ambedkar Institute of Technology, Bengaluru</em>{' '}
+            <span className="text-sm text-slate-500">(2021 – 2025) · CGPA: 7.23</span>
+          </h3>
+          <p className="text-sm mt-2">
+            Relevant coursework: Structural analysis, Materials, Data-driven investigations, and
+            foundational software engineering topics.
+          </p>
         </div>
 
         <div>
@@ -26,7 +33,7 @@ export default function Education(){
             <li>10th Grade — Seva Sagara High School (79.5%, 2019)</li>
           </ul>
         </div>
-      </div> 
+      </div>
     </section>
-  )
+  );
 }
