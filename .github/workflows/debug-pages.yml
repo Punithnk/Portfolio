@@ -1,0 +1,29 @@
+name: Debug Pages Config
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: read
+
+jobs:
+  show-pages-config:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Show Pages configuration
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            try {
+              const resp = await github.rest.repos.getPages({ owner, repo });
+              core.info('Pages config: ' + JSON.stringify(resp.data, null, 2));
+            } catch (err) {
+              core.info('Error fetching Pages config: ' + err.message);
+              throw err;
+            }
