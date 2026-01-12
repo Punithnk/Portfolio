@@ -70,18 +70,27 @@ jobs:
           git push "https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}" gh-pages --force
           echo "Pushed gh-pages"
 
-      - name: Configure GitHub Pages to use gh-pages branch
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const owner = context.repo.owner;
-            const repo = context.repo.repo;
-            core.info(`Setting Pages source to gh-pages for ${owner}/${repo}`);
-            await github.rest.repos.createPagesSite({
-              owner,
-              repo,
-              source: { branch: 'gh-pages', path: '/' }
-            });
+      - name: Configure GitHub Pages to use gh-pages branch (gh CLI fallback)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -e
+          OWNER=${{ github.repository_owner }}
+          REPO_NAME=${REPO#*/}
+          URL="https://${OWNER}.github.io/${REPO_NAME}/"
+
+          echo "Attempting to set Pages source to gh-pages using gh API..."
+          if command -v gh >/dev/null 2>&1; then
+            gh api -X POST /repos/${OWNER}/${REPO_NAME}/pages -f source.branch=gh-pages -f source.path='/' || true
+            # If POST failed, attempt PATCH
+            gh api -X PUT /repos/${OWNER}/${REPO_NAME}/pages -f source.branch=gh-pages -f source.path='/' || true
+            echo "Requested Pages update via gh API"
+          else
+            echo "gh CLI not available; attempting via octokit (github-script)"
+            node -e "(async()=>{const { Octokit } = require('@octokit/rest'); const octo = new Octokit({auth: process.env.GITHUB_TOKEN}); try{ await octo.rest.repos.createPagesSite({ owner: '${OWNER}', repo: '${REPO_NAME}', source: { branch: 'gh-pages', path: '/' } }); console.log('createPagesSite OK'); }catch(e){ console.error('createPagesSite failed:', e.message); try { await octo.request('PUT /repos/{owner}/{repo}/pages', { owner: '${OWNER}', repo: '${REPO_NAME}', source: { branch: 'gh-pages', path: '/' } }); console.log('PUT pages OK'); }catch(e2){ console.error('Fallback failed:', e2.message); process.exit(1);} } })()" || true
+          fi
+          echo "Pages update requested for ${OWNER}/${REPO_NAME}. URL: ${URL}"
 
       - name: Wait for Pages to serve the built site
         env:
