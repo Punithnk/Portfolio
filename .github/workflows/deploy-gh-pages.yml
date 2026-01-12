@@ -70,7 +70,7 @@ jobs:
           git push "https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}" gh-pages --force
           echo "Pushed gh-pages"
 
-      - name: Configure GitHub Pages to use gh-pages branch (gh CLI fallback)
+      - name: Configure GitHub Pages to use gh-pages branch (gh CLI fallback; capture logs)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
@@ -80,17 +80,25 @@ jobs:
           REPO_NAME=${REPO#*/}
           URL="https://${OWNER}.github.io/${REPO_NAME}/"
 
-          echo "Attempting to set Pages source to gh-pages using gh API..."
-          if command -v gh >/dev/null 2>&1; then
-            gh api -X POST /repos/${OWNER}/${REPO_NAME}/pages -f source.branch=gh-pages -f source.path='/' || true
-            # If POST failed, attempt PATCH
-            gh api -X PUT /repos/${OWNER}/${REPO_NAME}/pages -f source.branch=gh-pages -f source.path='/' || true
-            echo "Requested Pages update via gh API"
-          else
-            echo "gh CLI not available; attempting via octokit (github-script)"
-            node -e "(async()=>{const { Octokit } = require('@octokit/rest'); const octo = new Octokit({auth: process.env.GITHUB_TOKEN}); try{ await octo.rest.repos.createPagesSite({ owner: '${OWNER}', repo: '${REPO_NAME}', source: { branch: 'gh-pages', path: '/' } }); console.log('createPagesSite OK'); }catch(e){ console.error('createPagesSite failed:', e.message); try { await octo.request('PUT /repos/{owner}/{repo}/pages', { owner: '${OWNER}', repo: '${REPO_NAME}', source: { branch: 'gh-pages', path: '/' } }); console.log('PUT pages OK'); }catch(e2){ console.error('Fallback failed:', e2.message); process.exit(1);} } })()" || true
-          fi
-          echo "Pages update requested for ${OWNER}/${REPO_NAME}. URL: ${URL}"
+          echo "Attempting to set Pages source to gh-pages using gh API..." > pages-config.log 2>&1
+          (
+            if command -v gh >/dev/null 2>&1; then
+              echo "Using gh CLI" >> pages-config.log
+              gh api -X POST /repos/${OWNER}/${REPO_NAME}/pages -f source.branch=gh-pages -f source.path='/' >> pages-config.log 2>&1 || true
+              gh api -X PUT /repos/${OWNER}/${REPO_NAME}/pages -f source.branch=gh-pages -f source.path='/' >> pages-config.log 2>&1 || true
+              echo "Requested Pages update via gh API" >> pages-config.log
+            else
+              echo "gh CLI not available; attempting via octokit (github-script)" >> pages-config.log
+              node -e "(async()=>{const { Octokit } = require('@octokit/rest'); const octo = new Octokit({auth: process.env.GITHUB_TOKEN}); try{ await octo.rest.repos.createPagesSite({ owner: '${OWNER}', repo: '${REPO_NAME}', source: { branch: 'gh-pages', path: '/' } }); console.log('createPagesSite OK'); }catch(e){ console.error('createPagesSite failed:', e.message); try { await octo.request('PUT /repos/{owner}/{repo}/pages', { owner: '${OWNER}', repo: '${REPO_NAME}', source: { branch: 'gh-pages', path: '/' } }); console.log('PUT pages OK'); }catch(e2){ console.error('Fallback failed:', e2.message); process.exit(1);} } })()" >> pages-config.log 2>&1 || true
+            fi
+            echo "Pages update requested for ${OWNER}/${REPO_NAME}. URL: ${URL}" >> pages-config.log
+          ) || true
+
+      - name: Upload Pages config logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: pages-config-log
+          path: pages-config.log
 
       - name: Wait for Pages to serve the built site
         env:
