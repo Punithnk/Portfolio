@@ -32,13 +32,43 @@ jobs:
           echo "Building with base: /$REPO_NAME/"
           npm run build -- --base "/$REPO_NAME/"
 
-      - name: Deploy to gh-pages branch
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          publish_branch: gh-pages
-          allow_empty_commit: false
+      - name: Deploy to gh-pages branch (manual push)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -e
+          REPO_NAME=${REPO#*/}
+          echo "Deploying to gh-pages for $REPO_NAME"
+          git --version
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Clone gh-pages (or create if it doesn't exist)
+          if git ls-remote --exit-code --heads "https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}" gh-pages; then
+            echo "gh-pages exists; cloning"
+            git clone --depth=1 --branch=gh-pages "https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}" gh-pages
+            rm -rf gh-pages/*
+          else
+            echo "gh-pages does not exist; creating new tree"
+            mkdir gh-pages
+            git init gh-pages
+            cd gh-pages
+            git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}"
+            cd ..
+          fi
+
+          cp -R dist/* gh-pages/ || true
+          ls -la gh-pages | sed -n '1,200p'
+          cd gh-pages
+          git add -A
+          if git commit -m "chore: deploy site via CI"; then
+            echo "Committed changes"
+          else
+            echo "No changes to commit"
+          fi
+          git push "https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}" gh-pages --force
+          echo "Pushed gh-pages"
 
       - name: Configure GitHub Pages to use gh-pages branch
         uses: actions/github-script@v7
