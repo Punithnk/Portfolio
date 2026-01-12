@@ -6,7 +6,7 @@ on:
 
 permissions:
   pages: write
-  contents: read
+  contents: write
 
 jobs:
   build-and-deploy:
@@ -51,5 +51,44 @@ jobs:
               owner,
               repo,
               source: { branch: 'gh-pages', path: '/' }
+            });
+
+      - name: Wait for Pages to serve the built site
+        env:
+          OWNER: ${{ github.repository_owner }}
+          REPO: ${{ github.repository }}
+        run: |
+          REPO_NAME=${REPO#*/}
+          URL="https://${OWNER}.github.io/${REPO_NAME}/"
+          echo "Waiting for $URL to serve the built site..."
+          for i in $(seq 1 30); do
+            echo "Attempt $i"
+            status=$(curl -s -o /dev/null -w "%{http_code}" "$URL") || true
+            if [ "$status" = "200" ]; then
+              # check for built asset path
+              if curl -s "$URL" | grep -q "/$REPO_NAME/assets/"; then
+                echo "Site is serving built assets"
+                exit 0
+              fi
+            fi
+            sleep 10
+          done
+          echo "Timed out waiting for site to be updated"
+          exit 1
+
+      - name: Comment commit with deployed URL
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const url = `https://${owner}.github.io/${repo}/`;
+            const sha = context.sha;
+            core.info(`Commenting commit ${sha} with deployed URL ${url}`);
+            await github.rest.repos.createCommitComment({
+              owner,
+              repo,
+              commit_sha: sha,
+              body: `Deployed to ${url}`
             });
 
