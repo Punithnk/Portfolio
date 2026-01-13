@@ -3,13 +3,13 @@ import React from 'react';
 export default function Education() {
   return (
     <section id="education" className="mb-12">
-      <h2 className="text-2xl font-semibold text-slate-900 mb-4">Education</h2>
-      <div className="space-y-4 text-slate-700">
+      <h2 className="text-2xl font-semibold text-slate-900 dark:text-slate-100 mb-4">Education</h2>
+      <div className="space-y-4 text-slate-700 dark:text-slate-300">
         <div>
           <h3 className="font-semibold">
             Bachelor of Engineering (B.E.), Civil Engineering —{' '}
             <em>Dr. Ambedkar Institute of Technology, Bengaluru</em>{' '}
-            <span className="text-sm text-slate-500">(2021 – 2025) · CGPA: 7.23</span>
+            <span className="text-sm text-slate-500 dark:text-slate-400">(2021 – 2025) · CGPA: 7.23</span>
           </h3>
           <p className="text-sm mt-2">
             Relevant coursework: Structural analysis, Materials, Data-driven investigations, and

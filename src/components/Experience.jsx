@@ -3,12 +3,12 @@ import React from 'react';
 export default function Experience() {
   return (
     <section id="experience" className="mb-12">
-      <h2 className="text-2xl font-semibold text-slate-900 mb-4">Experience & Internships</h2>
-      <div className="space-y-6 text-slate-700">
+      <h2 className="text-2xl font-semibold text-slate-900 dark:text-slate-100 mb-4">Experience & Internships</h2>
+      <div className="space-y-6 text-slate-700 dark:text-slate-300">
         <div>
           <h3 className="font-semibold">
             Software Development Trainee — KodNest{' '}
-            <span className="text-sm text-slate-500">(Jun 2025 – Present)</span>
+            <span className="text-sm text-slate-500 dark:text-slate-400">(Jun 2025 – Present)</span>
           </h3>
           <ul className="list-disc ml-5 mt-2 text-sm">
             <li>Developed REST APIs and frontend features using Python and React to deliver MVP capabilities.</li>

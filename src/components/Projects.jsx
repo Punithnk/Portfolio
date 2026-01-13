@@ -104,7 +104,7 @@ export default function Projects() {
 
   return (
     <section id="projects" className="mb-12">
-      <h2 className="text-2xl font-semibold text-slate-900 mb-4">Projects</h2>
+      <h2 className="text-2xl font-semibold text-slate-900 dark:text-slate-100 mb-4">Projects</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {projects.map((p) => (
           <Card key={p.id} project={p} onOpen={handleOpen} />
