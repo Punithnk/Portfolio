@@ -2,7 +2,12 @@ import React from 'react';
 
 export default function Hero() {
   return (
-    <header className="mb-12 motion-safe:animate-fade-up surface-card p-6 rounded-xl shadow-sm">
+    <header className="mb-12 motion-safe:animate-fade-up surface-card p-6 rounded-xl shadow-sm relative overflow-hidden">
+      {/* decorative SVG waves positioned behind content */}
+      <div className="pointer-events-none absolute -top-10 -right-10 opacity-30 dark:opacity-40">
+        <img src="/images/hero-waves.svg" alt="" className="w-80 h-36 sm:w-96 sm:h-44" />
+      </div>
+
       <div className="flex flex-col sm:flex-row items-center gap-6">
         <div
           className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-teal-600 to-blue-600 flex items-center justify-center text-white font-bold text-xl sm:text-2xl"
@@ -10,6 +15,7 @@ export default function Hero() {
         >
           PN
         </div>
+
         <div className="flex-1">
           <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-slate-100 leading-tight">
             Punith N K
@@ -50,6 +56,11 @@ export default function Hero() {
             </a>
             {' '}· <a className="text-teal-600 dark:text-teal-300 underline hover:text-teal-700 dark:hover:text-teal-400" href="https://www.linkedin.com/in/punith-n-k-900a5a256" target="_blank" rel="noreferrer">LinkedIn</a> · <a className="text-teal-600 dark:text-teal-300 underline hover:text-teal-700 dark:hover:text-teal-400" href="https://github.com/Punithnk" target="_blank" rel="noreferrer">GitHub</a>
           </p>
+        </div>
+
+        {/* small hero graphic shown on md+ */}
+        <div className="hidden md:block md:shrink-0">
+          <img src="/images/hero-graphic.svg" alt="illustration" className="w-36 h-36 opacity-90 dark:opacity-70" />
         </div>
       </div>
     </header>

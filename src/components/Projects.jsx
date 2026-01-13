@@ -3,6 +3,12 @@ import React from 'react';
 function Card({ project, onOpen }) {
   return (
     <article className="border rounded-lg p-5 bg-white dark:bg-slate-800 shadow-sm hover:shadow-md transform transition hover:-translate-y-1 motion-safe:animate-fade-up">
+      {project.image && (
+        <div className="w-full h-40 overflow-hidden rounded-md mb-3 bg-slate-100 dark:bg-slate-700">
+          <img loading="lazy" src={project.image} alt={project.title} className="w-full h-full object-cover dark:brightness-75" />
+        </div>
+      )}
+
       <div className="flex items-start justify-between gap-4">
         <h3 className="font-semibold text-slate-800 dark:text-slate-100">{project.title}</h3>
         <div className="text-sm text-slate-500 dark:text-slate-300">{project.tech}</div>
@@ -59,6 +65,7 @@ export default function Projects() {
     {
       id: 'taskify',
       title: 'Taskify — Full‑Stack Task Manager',
+      image: '/images/taskify-thumb.svg',
       summary: 'A lightweight task manager to practice full-stack development and ship usable features.',
       detail:
         'Built CRUD features, task filtering, and lightweight auth flows using React, Python APIs and MySQL. Focused on testability and UX. See the GitHub repo for code and deployment notes.',
@@ -69,6 +76,7 @@ export default function Projects() {
     {
       id: 'concrete',
       title: 'Investigation of Self‑Healing Concrete',
+      image: '/images/concrete-thumb.svg',
       summary: 'Experimental study to evaluate materials that can autonomously heal cracks to improve service life.',
       detail:
         'Led experiments, measured healing metrics over time, and summarized findings with actionable recommendations for material selection and future work.',
@@ -77,6 +85,7 @@ export default function Projects() {
     {
       id: 'bamboo',
       title: 'Bamboo Fiber Reinforced Concrete',
+      image: '/images/bamboo-thumb.svg',
       summary: 'Explored sustainable material substitutions and evaluated mechanical performance.',
       detail:
         'Designed specimen tests, collected and analyzed strength data, and presented conclusions in a technical report.',

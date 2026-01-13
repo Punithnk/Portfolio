@@ -9,13 +9,16 @@
     "preview": "vite preview",
     "lint": "eslint \"src/**/*.{js,jsx}\"",
     "lint:fix": "eslint \"src/**/*.{js,jsx}\" --fix",
-    "format": "prettier --write \"**/*.{js,jsx,css,md,json,html}\""
+    "format": "prettier --write \"**/*.{js,jsx,css,md,json,html}\"",
+    "test:visual": "playwright test",
+    "test:visual:update": "playwright test --update-snapshots"
   },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.57.0",
     "@vitejs/plugin-react": "^5.1.2",
     "autoprefixer": "^10.4.14",
     "eslint": "^8.46.0",
