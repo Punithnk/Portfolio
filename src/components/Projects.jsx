@@ -3,9 +3,7 @@ import React from 'react';
 function Card({ project, onOpen }) {
   return (
     <article className="border rounded-lg p-5 bg-white dark:bg-slate-800 shadow-sm hover:shadow-md transform transition hover:-translate-y-1 motion-safe:animate-fade-up">
-      <div className="h-40 md:h-44 bg-slate-100 dark:bg-slate-800 rounded-md flex items-center justify-center mb-3">
-        <div className="text-sm text-slate-700 dark:text-slate-300">{project.title}</div>
-      </div>
+
 
       <div className="flex items-start justify-between gap-4">
         <h3 className="font-semibold text-slate-800 dark:text-slate-100">{project.title}</h3>
