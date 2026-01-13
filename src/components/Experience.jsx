@@ -2,23 +2,18 @@ import React from 'react';
 
 export default function Experience() {
   return (
-    <section className="mb-12">
+    <section id="experience" className="mb-12">
       <h2 className="text-2xl font-semibold text-slate-900 mb-4">Experience & Internships</h2>
-      <div className="space-y-4 text-slate-700">
+      <div className="space-y-6 text-slate-700">
         <div>
           <h3 className="font-semibold">
             Software Development Trainee — KodNest{' '}
             <span className="text-sm text-slate-500">(Jun 2025 – Present)</span>
           </h3>
           <ul className="list-disc ml-5 mt-2 text-sm">
-            <li>
-              Implemented and debugged end-to-end features using Python, Java, SQL, and front-end
-              technologies.
-            </li>
-            <li>
-              Built automation scripts and dashboards to surface key metrics and streamline
-              workflows; actively collaborated in Agile sprints.
-            </li>
+            <li>Developed REST APIs and frontend features using Python and React to deliver MVP capabilities.</li>
+            <li>Automated data validation tasks and created dashboards to surface defects—reduced manual verification time and improved visibility for stakeholders.</li>
+            <li>Collaborated in Agile sprints, wrote unit tests, and participated in code reviews to maintain quality.</li>
           </ul>
         </div>
 
@@ -28,13 +23,8 @@ export default function Experience() {
             <span className="text-sm text-slate-500">(Jan 2025 – May 2025)</span>
           </h3>
           <ul className="list-disc ml-5 mt-2 text-sm">
-            <li>
-              Led data validation and reporting efforts to support product quality and operational
-              workflows.
-            </li>
-            <li>
-              Prepared technical reports that supported engineering decisions and testing scenarios.
-            </li>
+            <li>Led data validation and reporting efforts to improve product data accuracy and operational efficiency.</li>
+            <li>Produced technical reports and actionable insights used by engineers for testing and release decisions.</li>
           </ul>
         </div>
 
@@ -44,24 +34,18 @@ export default function Experience() {
             <span className="text-sm text-slate-500">(Nov 2023 – Dec 2023)</span>
           </h3>
           <ul className="list-disc ml-5 mt-2 text-sm">
-            <li>
-              Ensured on-site data accuracy and supported project documentation and coordination
-              tasks.
-            </li>
+            <li>Improved on-site data capture and streamlined documentation processes to support project coordination.</li>
           </ul>
         </div>
 
         <div>
-          <h3 className="font-semibold">Projects & Academic Work</h3>
+          <h3 className="font-semibold">Selected Projects</h3>
           <ul className="list-disc ml-5 mt-2 text-sm">
             <li>
-              <strong>Taskify</strong> — Full‑stack task manager (React.js frontend, Python APIs,
-              MySQL); implemented CRUD features, UI workflows, debugging, and deployment via GitHub
-              Pages.
+              <strong>Taskify</strong> — Built a full‑stack task manager (React frontend, Python APIs, MySQL); owned UI workflows and deployment; <a className="text-teal-600 underline" href="https://github.com/Punithnk/Taskify" target="_blank" rel="noreferrer">GitHub</a>.
             </li>
             <li>
-              Academic research projects on concrete technology and bamboo-fiber reinforced
-              concrete; executed experiments, performed data analysis, and documented findings.
+              Academic investigations on self-healing concrete and bamboo-fiber reinforced concrete; led experiments, analyzed data, and wrote technical summaries.
             </li>
           </ul>
         </div>

@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function Education() {
   return (
-    <section className="mb-12">
-      <h2 className="text-2xl font-semibold text-slate-900 mb-4">Education & Certifications</h2>
+    <section id="education" className="mb-12">
+      <h2 className="text-2xl font-semibold text-slate-900 mb-4">Education</h2>
       <div className="space-y-4 text-slate-700">
         <div>
           <h3 className="font-semibold">
@@ -15,15 +15,6 @@ export default function Education() {
             Relevant coursework: Structural analysis, Materials, Data-driven investigations, and
             foundational software engineering topics.
           </p>
-        </div>
-
-        <div>
-          <h3 className="font-semibold">Certifications</h3>
-          <ul className="list-disc ml-5 mt-2 text-sm">
-            <li>Python Training — Besant Technologies (2025)</li>
-            <li>Generative AI Basics — LinkedIn Learning</li>
-            <li>Copilot for Teams — LinkedIn Learning</li>
-          </ul>
         </div>
 
         <div>

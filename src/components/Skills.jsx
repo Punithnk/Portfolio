@@ -20,23 +20,13 @@ function Group({ title, items }) {
 
 export default function Skills() {
   return (
-    <section className="mb-12">
+    <section id="skills" className="mb-12">
       <h2 className="text-2xl font-semibold text-slate-900 mb-4">Skills</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <Group title="Frontend" items={['React.js', 'JavaScript (ES6+)', 'HTML5', 'CSS3']} />
-        <Group title="Backend & Data" items={['Python', 'Java', 'SQL', 'REST APIs']} />
-        <Group title="Languages" items={['JavaScript', 'Python', 'Java', 'C (Basic)']} />
-        <Group
-          title="Tools & Practices"
-          items={[
-            'Git & GitHub',
-            'VS Code',
-            'Unit Testing',
-            'CI basics',
-            'Documentation',
-            'Teamwork',
-          ]}
-        />
+        <Group title="Frontend" items={['React.js', 'JavaScript (ES6+)', 'HTML5', 'CSS3', 'Tailwind']} />
+        <Group title="Backend" items={['Python', 'Java', 'Node.js', 'SQL', 'REST APIs']} />
+        <Group title="Tools" items={['Git & GitHub', 'VS Code', 'Docker (basic)', 'Unit Testing', 'CI/CD', 'Figma (basic)']} />
+        <Group title="Languages" items={['English', 'Kannada', 'Hindi']} />
       </div>
     </section>
   );
