@@ -5,33 +5,23 @@
   "private": true,
   "homepage": "https://punithnk.github.io/Portfolio/",
   "scripts": {
-  "dev": "vite",
-  "build": "vite build",
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d dist",
-  "preview": "vite preview",
-  "lint": "eslint \"src/**/*.{js,jsx}\"",
-  "lint:fix": "eslint \"src/**/*.{js,jsx}\" --fix",
-  "format": "prettier --write \"**/*.{js,jsx,css,md,json,html}\"",
-  "test:visual": "playwright test",
-  "test:visual:update": "playwright test --update-snapshots"
-},
+    "dev": "vite",
+    "build": "vite build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "preview": "vite preview"
+  },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@playwright/test": "^1.57.0",
     "@vitejs/plugin-react": "^5.1.2",
-    "autoprefixer": "^10.4.14",
-    "eslint": "^8.46.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-jsx-a11y": "^6.8.1",
-    "eslint-plugin-react": "^7.32.2",
+    "@tailwindcss/postcss": "^4.1.18",
+    "autoprefixer": "^10.4.23",
     "gh-pages": "^6.3.0",
-    "postcss": "^8.4.21",
-    "prettier": "^2.8.8",
-    "tailwindcss": "^3.4.0",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.18",
     "vite": "^5.0.0"
   }
 }
