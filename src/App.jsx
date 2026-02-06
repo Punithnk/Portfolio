@@ -26,23 +26,18 @@ export default function App() {
     } catch (e) {}
   }, [isDark]);
 
-  function toggleTheme() {
-    setIsDark((v) => !v);
-  }
-
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
-      <Nav onToggleTheme={toggleTheme} isDark={isDark} />
-      <div className="max-w-4xl mx-auto px-6 sm:px-8 py-12 md:py-20">
+    <div className="min-h-screen text-slate-900 dark:text-slate-100">
+      <Nav onToggleTheme={() => setIsDark((v) => !v)} isDark={isDark} />
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16">
         <Hero />
-        <Skills />
         <Projects />
         <Experience />
+        <Skills />
         <Education />
         <Certifications />
         <Contact />
-      </div>
-
+      </main>
       <BackToTop />
     </div>
   );
