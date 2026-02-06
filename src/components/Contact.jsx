@@ -53,7 +53,22 @@ export default function Contact() {
 
   return (
     <section id="contact" className="mb-16">
-      <h2 className="section-title text-slate-900 dark:text-slate-100 mb-4">Contact</h2>
+      <div className="glass-card p-6 mb-6">
+        <p className="section-kicker">Open to roles</p>
+        <h2 className="mt-3 section-title text-slate-900 dark:text-slate-100">Let us build something great</h2>
+        <p className="mt-3 text-sm text-slate-600 dark:text-slate-300 max-w-2xl">
+          I am actively looking for entry-level software roles and internships. If you are hiring or want to
+          collaborate, I would love to connect.
+        </p>
+        <div className="mt-4 flex flex-wrap gap-3">
+          <a className="btn-primary" href={resumeUrl} download>
+            Download Resume
+          </a>
+          <a className="btn-ghost" href="mailto:punithnk1932003@gmail.com">
+            Email Me
+          </a>
+        </div>
+      </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         <div className="glass-card p-5 text-slate-700 dark:text-slate-300">
@@ -72,14 +87,10 @@ export default function Contact() {
             </p>
           </div>
 
-          <div className="mt-6 text-sm text-slate-600 dark:text-slate-400">
+          <div className="mt-6 text-sm text-slate-600 dark:text-slate-400 space-y-2">
             <p><strong>Languages:</strong> English (Professional), Kannada (Native), Hindi (Limited)</p>
-            <p className="mt-2"><strong>Interests:</strong> Software Development, Data Analytics, IoT, Automation</p>
+            <p><strong>Interests:</strong> Software Development, Data Analytics, IoT, Automation</p>
           </div>
-
-          <a className="mt-6 inline-flex btn-ghost" href={resumeUrl} download>
-            Download Resume
-          </a>
         </div>
 
         <form

@@ -2,9 +2,9 @@ import React from 'react';
 
 export default function Education() {
   return (
-    <section id="education" className="mb-14">
+    <section id="education" className="mb-16">
       <h2 className="section-title text-slate-900 dark:text-slate-100 mb-4">Education</h2>
-      <div className="grid grid-cols-1 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div className="glass-card p-5">
           <h3 className="font-semibold text-slate-900 dark:text-slate-100">
             Bachelor of Engineering (B.E.), Civil Engineering
@@ -14,7 +14,7 @@ export default function Education() {
           </p>
           <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">2021 - 2025 | CGPA: 7.23</p>
           <p className="text-sm mt-3 text-slate-600 dark:text-slate-300">
-            Relevant coursework: Structural analysis, Materials, Data-driven investigations, and foundational software
+            Relevant coursework: Structural analysis, materials, data-driven investigations, and foundational software
             engineering topics.
           </p>
         </div>

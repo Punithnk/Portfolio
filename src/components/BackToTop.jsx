@@ -5,7 +5,7 @@ export default function BackToTop() {
 
   React.useEffect(() => {
     function onScroll() {
-      setVisible(window.scrollY > 400);
+      setVisible(window.scrollY > 500);
     }
     window.addEventListener('scroll', onScroll);
     onScroll();
