@@ -52,57 +52,32 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="mb-16">
-      <div className="glass-card p-6 mb-6">
-        <p className="section-kicker">Open to roles</p>
-        <h2 className="mt-3 section-title text-slate-900 dark:text-slate-100">Let us build something great</h2>
-        <p className="mt-3 text-sm text-slate-600 dark:text-slate-300 max-w-2xl">
-          I am actively looking for entry-level software roles and internships. If you are hiring or want to
-          collaborate, I would love to connect.
-        </p>
-        <div className="mt-4 flex flex-wrap gap-3">
-          <a className="btn-primary" href={resumeUrl} download>
-            Download Resume
-          </a>
-          <a className="btn-ghost" href="mailto:punithnk1932003@gmail.com">
-            Email Me
-          </a>
-        </div>
-      </div>
+    <section id="contact" className="mb-12">
+      <h2 className="text-2xl font-semibold text-slate-900 dark:text-slate-100 mb-4">Contact</h2>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-        <div className="glass-card p-5 text-slate-700 dark:text-slate-300">
-          <p className="text-sm text-slate-500 dark:text-slate-400">Location</p>
-          <p className="mt-1">Bengaluru, India</p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="text-slate-700 dark:text-slate-300">
+          <p className="mb-2">Bengaluru, India</p>
+          <p className="mb-2">Email: <a className="text-teal-600 underline dark:text-teal-300" href="mailto:punithnk1932003@gmail.com">punithnk1932003@gmail.com</a></p>
+          <p className="mb-2">LinkedIn: <a className="text-teal-600 underline dark:text-teal-300" href="https://www.linkedin.com/in/punith-n-k-900a5a256" target="_blank" rel="noreferrer">punith-n-k</a></p>
+          <p className="mb-2">GitHub: <a className="text-teal-600 underline dark:text-teal-300" href="https://github.com/Punithnk" target="_blank" rel="noreferrer">Punithnk</a></p>
 
-          <div className="mt-4 space-y-2 text-sm">
-            <p>
-              Email: <a className="text-sky-600 dark:text-cyan-300 hover:underline" href="mailto:punithnk1932003@gmail.com">punithnk1932003@gmail.com</a>
-            </p>
-            <p>
-              LinkedIn: <a className="text-sky-600 dark:text-cyan-300 hover:underline" href="https://www.linkedin.com/in/punith-n-k-900a5a256" target="_blank" rel="noreferrer">punith-n-k</a>
-            </p>
-            <p>
-              GitHub: <a className="text-sky-600 dark:text-cyan-300 hover:underline" href="https://github.com/Punithnk" target="_blank" rel="noreferrer">Punithnk</a>
-            </p>
-          </div>
-
-          <div className="mt-6 text-sm text-slate-600 dark:text-slate-400 space-y-2">
+          <div className="mt-4 text-sm text-slate-600 dark:text-slate-400">
             <p><strong>Languages:</strong> English (Professional), Kannada (Native), Hindi (Limited)</p>
-            <p><strong>Interests:</strong> Software Development, Data Analytics, IoT, Automation</p>
+            <p className="mt-2"><strong>Interests:</strong> Software Development, Data Analytics, IoT, Automation</p>
           </div>
         </div>
 
         <form
           ref={formRef}
           onSubmit={onSubmit}
-          className="glass-card p-5"
+          className="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm"
         >
           <input type="text" name="_honey" style={{ display: 'none' }} tabIndex="-1" autoComplete="off" />
           <input type="hidden" name="_subject" value="Website Contact - Portfolio" />
 
           {successMsg && (
-            <div className="text-sm text-emerald-600 mb-2" role="status" aria-live="polite">
+            <div className="text-sm text-green-600 mb-2" role="status" aria-live="polite">
               {successMsg}
             </div>
           )}
@@ -112,47 +87,51 @@ export default function Contact() {
             </div>
           )}
 
-          <label className="block text-sm mb-1 text-slate-600 dark:text-slate-300">Name</label>
+          <label className="block text-sm mb-1">Name</label>
           <input
             name="name"
             value={form.name}
             onChange={onChange}
-            className="w-full border rounded-lg p-2 mb-2 bg-transparent text-slate-900 dark:text-slate-100 border-slate-200/60 dark:border-slate-700/60"
-            autoComplete="name"
+            className="w-full border rounded-md p-2 mb-2 bg-transparent text-slate-900 dark:text-slate-100 border-slate-200 dark:border-slate-700"
             required
           />
           {errors.name && <div className="text-xs text-red-600 mb-2">{errors.name}</div>}
 
-          <label className="block text-sm mb-1 text-slate-600 dark:text-slate-300">Email</label>
+          <label className="block text-sm mb-1">Email</label>
           <input
             name="email"
             type="email"
             value={form.email}
             onChange={onChange}
-            className="w-full border rounded-lg p-2 mb-2 bg-transparent text-slate-900 dark:text-slate-100 border-slate-200/60 dark:border-slate-700/60"
-            autoComplete="email"
+            className="w-full border rounded-md p-2 mb-2 bg-transparent text-slate-900 dark:text-slate-100 border-slate-200 dark:border-slate-700"
             required
           />
           {errors.email && <div className="text-xs text-red-600 mb-2">{errors.email}</div>}
 
-          <label className="block text-sm mb-1 text-slate-600 dark:text-slate-300">Message</label>
+          <label className="block text-sm mb-1">Message</label>
           <textarea
             name="message"
             value={form.message}
             onChange={onChange}
             rows={5}
-            className="w-full border rounded-lg p-2 mb-3 bg-transparent text-slate-900 dark:text-slate-100 border-slate-200/60 dark:border-slate-700/60"
+            className="w-full border rounded-md p-2 mb-2 bg-transparent text-slate-900 dark:text-slate-100 border-slate-200 dark:border-slate-700"
             required
           />
           {errors.message && <div className="text-xs text-red-600 mb-2">{errors.message}</div>}
 
-          <button
-            type="submit"
-            disabled={sending}
-            className={`btn-primary ${sending ? 'opacity-70' : ''}`}
-          >
-            {sending ? 'Sending...' : 'Send Message'}
-          </button>
+          <div className="flex items-center justify-between">
+            <button
+              type="submit"
+              disabled={sending}
+              className={`inline-flex items-center gap-2 bg-slate-900 text-white py-2 px-4 rounded-md ${sending ? 'opacity-70' : ''}`}
+            >
+              {sending ? 'Sending...' : 'Send'}
+            </button>
+
+            <a className="text-sm text-teal-600 hover:underline" href={resumeUrl} download>
+              Download Resume
+            </a>
+          </div>
         </form>
       </div>
     </section>

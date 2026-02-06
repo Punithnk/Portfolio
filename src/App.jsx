@@ -29,7 +29,7 @@ export default function App() {
   return (
     <div className="min-h-screen text-slate-900 dark:text-slate-100">
       <Nav onToggleTheme={() => setIsDark((v) => !v)} isDark={isDark} />
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-14 md:py-16">
+      <main className="max-w-4xl mx-auto px-6 sm:px-8 py-12 md:py-20">
         <Hero />
         <Projects />
         <Experience />

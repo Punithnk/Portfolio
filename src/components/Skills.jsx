@@ -1,15 +1,15 @@
 import React from 'react';
 
-function Group({ title, items, note }) {
+function Group({ title, items }) {
   return (
-    <div className="glass-card p-5">
-      <div className="flex items-center justify-between mb-3">
-        <h3 className="font-semibold text-slate-900 dark:text-slate-100">{title}</h3>
-        {note ? <span className="text-xs text-slate-500 dark:text-slate-300">{note}</span> : null}
-      </div>
+    <div>
+      <h3 className="font-semibold text-slate-800 dark:text-slate-200 mb-2">{title}</h3>
       <div className="flex flex-wrap gap-2">
         {items.map((i) => (
-          <span key={i} className="chip">
+          <span
+            key={i}
+            className="inline-flex items-center bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 text-sm px-3 py-1 rounded-full border border-slate-200 dark:border-slate-700"
+          >
             {i}
           </span>
         ))}
@@ -20,13 +20,13 @@ function Group({ title, items, note }) {
 
 export default function Skills() {
   return (
-    <section id="skills" className="mb-16">
-      <h2 className="section-title text-slate-900 dark:text-slate-100 mb-4">Skills</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <section id="skills" className="mb-12">
+      <h2 className="text-2xl font-semibold text-slate-900 dark:text-slate-100 mb-4">Skills</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <Group title="Frontend" items={['React.js', 'JavaScript (ES6+)', 'HTML5', 'CSS3', 'Tailwind']} />
         <Group title="Backend" items={['Python', 'Java', 'Node.js', 'SQL', 'REST APIs']} />
         <Group title="Tools" items={['Git & GitHub', 'VS Code', 'Docker (basic)', 'Unit Testing', 'CI/CD', 'Figma (basic)']} />
-        <Group title="Languages" items={['English', 'Kannada', 'Hindi']} note="Professional + native" />
+        <Group title="Languages" items={['English', 'Kannada', 'Hindi']} />
       </div>
     </section>
   );

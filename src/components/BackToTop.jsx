@@ -5,7 +5,7 @@ export default function BackToTop() {
 
   React.useEffect(() => {
     function onScroll() {
-      setVisible(window.scrollY > 500);
+      setVisible(window.scrollY > 300);
     }
     window.addEventListener('scroll', onScroll);
     onScroll();
@@ -21,7 +21,7 @@ export default function BackToTop() {
     <button
       aria-label="Back to top"
       onClick={scrollTop}
-      className="fixed right-5 bottom-5 bg-slate-900/90 text-white px-3 py-2 rounded-full shadow-lg hover:scale-105 transition"
+      className="fixed right-6 bottom-6 bg-slate-900 text-white p-3 rounded-full shadow-lg hover:scale-105 transition button-ripple"
     >
       Top
     </button>
