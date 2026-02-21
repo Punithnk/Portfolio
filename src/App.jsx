@@ -8,6 +8,7 @@ import Education from './components/Education';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 import BackToTop from './components/BackToTop';
+import Footer from './components/Footer';
 
 export default function App() {
   const [isDark, setIsDark] = React.useState(() => {
@@ -31,9 +32,9 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 flex flex-col">
       <Nav onToggleTheme={toggleTheme} isDark={isDark} />
-      <div className="max-w-4xl mx-auto px-6 sm:px-8 py-12 md:py-20">
+      <div className="max-w-4xl mx-auto px-6 sm:px-8 py-12 md:py-20 flex-1">
         <Hero />
         <Skills />
         <Projects />
@@ -44,6 +45,7 @@ export default function App() {
       </div>
 
       <BackToTop />
+      <Footer />
     </div>
   );
 }
