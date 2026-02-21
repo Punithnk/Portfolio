@@ -15,6 +15,9 @@ export default function Education() {
             Relevant coursework: Structural analysis, Materials, Data-driven investigations, and
             foundational software engineering topics.
           </p>
+          <p className="text-sm mt-2">
+            Civil Engineering Software: AutoCAD, STAAd-Pro, Revit(Basics)
+          </p>
         </div>
 
         <div>

@@ -59,8 +59,18 @@ function Modal({ project, onClose }) {
 export default function Projects() {
   const projects = [
     {
+      id: 'Eatzo',
+      title: 'Eatzo — Full Stack Food Ordering Web Application',
+      summary: 'Developed a full-stack food ordering application featuring user authentication, menu browsing, cart management, and order placement.',
+      detail:
+        '• Developed a full-stack food ordering application featuring user authentication, menu browsing, cart management, and order placement.\n• Designed end-to-end application flow from frontend UI to SQL database, strengthening full-stack architecture understanding.\n• Built responsive user interfaces using React.js, HTML5, CSS3, and JavaScript.\n• Implemented Python-based backend APIs with SQL integration to manage users, products, and orders.\n• Applied CRUD operations, input validation, and error handling to improve application reliability.\n• Used Git for version control and followed modular coding practices to enhance maintainability.',
+      tech: 'React, Python, MySQL',
+      link: 'https://github.com/Punithnk/Eatzo',
+      demo: '',
+    },
+    {
       id: 'taskify',
-      title: 'Taskify — Full‑Stack Task Manager',
+      title: 'Taskify — Full-Stack Task Manager',
       summary: 'A lightweight task manager to practice full-stack development and ship usable features.',
       detail:
         'Built CRUD features, task filtering, and lightweight auth flows using React, Python APIs and MySQL. Focused on testability and UX. See the GitHub repo for code and deployment notes.',
@@ -70,7 +80,7 @@ export default function Projects() {
     },
     {
       id: 'concrete',
-      title: 'Investigation of Self‑Healing Concrete',
+      title: 'Investigation of Self-Healing Concrete',
       summary: 'Experimental study to evaluate materials that can autonomously heal cracks to improve service life.',
       detail:
         'Led experiments, measured healing metrics over time, and summarized findings with actionable recommendations for material selection and future work.',
